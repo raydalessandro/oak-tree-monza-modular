@@ -1,11 +1,46 @@
+<!-- Oak Tree Navbar Component -->
 <nav class="navbar" role="navigation" aria-label="Menu principale">
     <div class="nav-container">
         <a href="./index.html" class="logo" aria-label="Oak Tree Monza - Homepage">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                <path d="M12 7v5l4 2"/>
+            <!-- Logo Elaborato con Corona -->
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Definizioni Gradienti -->
+                <defs>
+                    <linearGradient id="trunkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#8b4513"/>
+                        <stop offset="100%" stop-color="#654321"/>
+                    </linearGradient>
+                    <linearGradient id="canopyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e60000"/>
+                        <stop offset="100%" stop-color="#ff3333"/>
+                    </linearGradient>
+                    <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffd700"/>
+                        <stop offset="50%" stop-color="#ffed4e"/>
+                        <stop offset="100%" stop-color="#ffa500"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Tronco -->
+                <rect fill="url(#trunkGradient)" x="26" y="40" width="8" height="16" rx="2"/>
+                
+                <!-- Chioma (foglie rosse Vodafone) -->
+                <ellipse fill="url(#canopyGradient)" cx="30" cy="32" rx="12" ry="16" opacity="0.95"/>
+                <ellipse fill="url(#canopyGradient)" cx="21" cy="28" rx="7" ry="9" opacity="0.9"/>
+                <ellipse fill="url(#canopyGradient)" cx="39" cy="28" rx="7" ry="9" opacity="0.9"/>
+                
+                <!-- Corona Reale (THE CROWN OAK) -->
+                <path fill="url(#crownGradient)" d="M30 8l2.5 5h-5l2.5-5z"/>
+                <path fill="url(#crownGradient)" d="M24.5 13l2 4h-4l2-4z"/>
+                <path fill="url(#crownGradient)" d="M35.5 13l2 4h-4l2-4z"/>
+                <path fill="url(#crownGradient)" d="M21 17h18l-1.5 2.5h-15L21 17z"/>
+                
+                <!-- Gemme sulla corona -->
+                <circle fill="#e60000" opacity="0.9" cx="17" cy="20" r="1.3"/>
+                <circle fill="#e60000" opacity="0.9" cx="43" cy="20" r="1.3"/>
+                <circle fill="#e60000" opacity="0.9" cx="30" cy="36" r="1.3"/>
             </svg>
-            <span class="logo-text">Oak Tree</span>
+            <span class="logo-text">Oak</span>
         </a>
         
         <ul class="nav-links" role="menubar">
