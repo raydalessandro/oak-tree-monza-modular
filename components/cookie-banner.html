@@ -1,0 +1,101 @@
+<!-- Cookie Consent Banner GDPR Compliant -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;" role="dialog" aria-label="Gestione cookie">
+    <div class="cookie-banner-content">
+        <div class="cookie-banner-text">
+            <h3>🍪 Utilizziamo i Cookie</h3>
+            <p>
+                Questo sito utilizza cookie tecnici e, previo tuo consenso, cookie di profilazione 
+                per migliorare l'esperienza di navigazione e mostrarti contenuti personalizzati. 
+                <a href="./cookie.html" class="cookie-link">Leggi la Cookie Policy</a>
+            </p>
+        </div>
+        
+        <div class="cookie-banner-actions">
+            <button id="cookie-accept-all" class="cookie-btn cookie-btn-primary">
+                ✅ Accetta Tutti
+            </button>
+            <button id="cookie-reject-all" class="cookie-btn cookie-btn-secondary">
+                ❌ Rifiuta
+            </button>
+            <button id="cookie-settings" class="cookie-btn cookie-btn-outline">
+                ⚙️ Personalizza
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookie-modal" class="cookie-modal" style="display: none;" role="dialog" aria-labelledby="cookie-modal-title">
+    <div class="cookie-modal-content">
+        <div class="cookie-modal-header">
+            <h2 id="cookie-modal-title">⚙️ Gestione Cookie</h2>
+            <button id="cookie-modal-close" class="cookie-modal-close" aria-label="Chiudi">&times;</button>
+        </div>
+        
+        <div class="cookie-modal-body">
+            <!-- Cookie Tecnici (sempre attivi) -->
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div class="cookie-category-info">
+                        <h3>🔧 Cookie Tecnici</h3>
+                        <p>Necessari per il funzionamento del sito. Non possono essere disabilitati.</p>
+                    </div>
+                    <label class="cookie-switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-category-details">
+                    <strong>Esempi:</strong> Sessione, preferenze lingua, carrello acquisti
+                </div>
+            </div>
+
+            <!-- Cookie Analytics -->
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div class="cookie-category-info">
+                        <h3>📊 Cookie Analitici</h3>
+                        <p>Ci aiutano a capire come i visitatori interagiscono con il sito.</p>
+                    </div>
+                    <label class="cookie-switch">
+                        <input type="checkbox" id="cookie-analytics" value="analytics">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-category-details">
+                    <strong>Provider:</strong> Google Analytics (GA4)<br>
+                    <strong>Durata:</strong> 2 anni<br>
+                    <strong>Dati raccolti:</strong> Pagine visitate, tempo sul sito, provenienza
+                </div>
+            </div>
+
+            <!-- Cookie Marketing (opzionale - se usi ads) -->
+            <div class="cookie-category">
+                <div class="cookie-category-header">
+                    <div class="cookie-category-info">
+                        <h3>🎯 Cookie Marketing</h3>
+                        <p>Utilizzati per mostrare pubblicità pertinenti ai tuoi interessi.</p>
+                    </div>
+                    <label class="cookie-switch">
+                        <input type="checkbox" id="cookie-marketing" value="marketing">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-category-details">
+                    <strong>Provider:</strong> Google Ads, Facebook Pixel<br>
+                    <strong>Durata:</strong> 90 giorni<br>
+                    <strong>Finalità:</strong> Retargeting, misurazione campagne
+                </div>
+            </div>
+        </div>
+        
+        <div class="cookie-modal-footer">
+            <button id="cookie-save-preferences" class="cookie-btn cookie-btn-primary">
+                💾 Salva Preferenze
+            </button>
+            <button id="cookie-accept-all-modal" class="cookie-btn cookie-btn-secondary">
+                ✅ Accetta Tutti
+            </button>
+        </div>
+    </div>
+</div>
