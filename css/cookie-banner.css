@@ -13,8 +13,15 @@
     color: white;
     padding: 1.5rem 1rem;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 8000; /* FIX: Ridotto da 9999 per non interferire */
+    z-index: 8000;
+    /* FIX: Inizialmente nascosto via CSS, JS lo mostrerà */
+    display: none;
     animation: slideUp 0.4s ease-out;
+}
+
+/* Classe per mostrare il banner */
+.cookie-banner.show {
+    display: block;
 }
 
 @keyframes slideUp {
@@ -120,12 +127,17 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(4px);
-    z-index: 9000; /* FIX: Ridotto da 10000 */
-    display: flex;
+    z-index: 9000;
+    display: none; /* Nascosto di default */
     align-items: center;
     justify-content: center;
     padding: 1rem;
     animation: fadeIn 0.3s ease-out;
+}
+
+/* Classe per mostrare il modal */
+.cookie-modal.show {
+    display: flex;
 }
 
 @keyframes fadeIn {
@@ -143,7 +155,7 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     animation: scaleIn 0.3s ease-out;
     position: relative;
-    z-index: 9001; /* FIX: Assicura che sia sopra il backdrop */
+    z-index: 9001;
 }
 
 @keyframes scaleIn {
@@ -284,6 +296,7 @@
 .cookie-switch input:disabled + .cookie-slider {
     background-color: #4ade80;
     cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .cookie-modal-footer {
@@ -294,19 +307,46 @@
     justify-content: flex-end;
 }
 
+/* Link footer per gestire cookie */
+.manage-cookies-link {
+    color: #cbd5e1;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.manage-cookies-link:hover {
+    color: var(--vodafone-red);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .cookie-banner {
+        padding: 1rem;
+    }
+    
     .cookie-banner-content {
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .cookie-banner-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .cookie-banner-text p {
+        font-size: 0.85rem;
     }
     
     .cookie-banner-actions {
-        justify-content: center;
+        justify-content: stretch;
+        flex-direction: column;
     }
     
     .cookie-btn {
-        flex: 1;
+        width: 100%;
+        padding: 0.875rem;
     }
     
     .cookie-modal-content {
@@ -317,5 +357,20 @@
     
     .cookie-modal-footer {
         flex-direction: column;
+    }
+    
+    .cookie-modal-footer .cookie-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    .cookie-banner-text h3 {
+        font-size: 1rem;
+    }
+    
+    .cookie-btn {
+        font-size: 0.875rem;
+        padding: 0.75rem;
     }
 }
