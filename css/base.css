@@ -30,6 +30,7 @@ body {
     color: var(--ink);
     background: var(--bg);
     overflow-x: hidden;
+    padding-top: 76px; /* 6px ribbon + 70px navbar */
 }
 
 a {
@@ -59,6 +60,30 @@ img {
     padding-inline: 24px;
 }
 
+/* ============================================
+   SKIP LINK (Accessibility)
+   ============================================ */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background: var(--vodafone-red);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: all 0.3s ease;
+}
+
+.skip-link:focus {
+    left: 0;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Screen Reader Only */
 .sr-only {
     position: absolute;
     width: 1px;
