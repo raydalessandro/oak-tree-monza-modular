@@ -1,0 +1,341 @@
+/* ============================================
+   CSS SPECIFICI PER PAGINE - Oak Tree Monza
+   ============================================ */
+
+/* Hero Homepage */
+.hero-section {
+    padding: 5rem 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(60% 40% at 30% 70%, rgba(230,0,0,.06), transparent 60%),
+        conic-gradient(from 45deg at 80% 20%, rgba(230,0,0,.08), transparent 45% 75%, rgba(230,0,0,.04));
+    pointer-events: none;
+}
+
+/* Offerte Grid */
+.offerte-section {
+    padding: 5rem 24px;
+    background: #ffffff;
+}
+
+.offerte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.offerta-card {
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.offerta-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.12);
+    border-color: var(--vodafone-red);
+}
+
+.offerta-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--vodafone-red);
+}
+
+.offerta-card p {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.offerta-card a {
+    color: var(--vodafone-red);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.offerta-card a:hover {
+    color: #b30000;
+}
+
+/* Page Headers per pagine interne */
+.page-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    padding: 120px 24px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(60% 40% at 30% 70%, rgba(230,0,0,.08), transparent 60%),
+        conic-gradient(from 45deg at 80% 20%, rgba(230,0,0,.12), transparent 45% 75%, rgba(230,0,0,.06));
+    pointer-events: none;
+}
+
+.page-header-container {
+    max-width: 1200px;
+    margin-inline: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.page-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--muted);
+    margin-bottom: 2rem;
+    max-width: 60ch;
+}
+
+/* Sezioni generiche */
+.section {
+    padding: 5rem 24px;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-tag {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--vodafone-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid responsive generica */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    justify-items: center;
+    max-width: 100%;
+}
+
+.grid-2 > * {
+    grid-column: span 6;
+    width: 100%;
+    max-width: 450px;
+}
+
+.grid-3 > * {
+    grid-column: span 4;
+    width: 100%;
+    max-width: 350px;
+}
+
+.grid-4 > * {
+    grid-column: span 3;
+    width: 100%;
+    max-width: 280px;
+}
+
+@media (max-width: 1024px) {
+    .grid-2 > * {
+        grid-column: span 6;
+        max-width: 400px;
+    }
+    
+    .grid-3 > *, 
+    .grid-4 > * {
+        grid-column: span 6;
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-2 > *, 
+    .grid-3 > *, 
+    .grid-4 > * {
+        grid-column: span 12;
+        max-width: 100%;
+    }
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(230,0,0,.3), transparent);
+}
+
+.cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: clamp(1.75rem, 4vw, 2.625rem);
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--vodafone-red);
+    color: white;
+    border: 2px solid var(--vodafone-red);
+}
+
+.btn-primary:hover {
+    background: #b30000;
+    border-color: #b30000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230,0,0,.25);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--ink);
+    border: 2px solid var(--light-gray);
+}
+
+.btn-secondary:hover {
+    border-color: var(--vodafone-red);
+    color: var(--vodafone-red);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230,0,0,.15);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    max-width: 600px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--light-gray);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230,0,0,.12);
+    border-color: rgba(230,0,0,.3);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--vodafone-red);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section,
+    .offerte-section,
+    .section {
+        padding: 3rem 20px;
+    }
+    
+    .page-header {
+        padding: 100px 20px 40px;
+    }
+    
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+}
