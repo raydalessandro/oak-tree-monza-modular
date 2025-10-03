@@ -41,7 +41,7 @@
         }
     }
 
-    // Inizializza menu mobile - FIX COMPLETO
+    // Inizializza menu mobile - FIX SEMPLIFICATO
     function initMobileMenu() {
         const menuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -68,25 +68,13 @@
             menuBtn.setAttribute('aria-expanded', !isExpanded);
             mobileMenu.classList.toggle('active');
             
-            // FIX: Gestione migliore del body overflow
+            // FIX SEMPLIFICATO per body overflow
             if (!isExpanded) {
-                // Apertura menu
-                document.body.classList.add('menu-open');
+                // Apertura menu - blocca scroll
                 document.body.style.overflow = 'hidden';
-                // Salva la posizione di scroll
-                const scrollY = window.scrollY;
-                document.body.style.position = 'fixed';
-                document.body.style.top = `-${scrollY}px`;
-                document.body.style.width = '100%';
             } else {
-                // Chiusura menu
-                document.body.classList.remove('menu-open');
-                const scrollY = document.body.style.top;
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
+                // Chiusura menu - ripristina scroll
                 document.body.style.overflow = '';
-                window.scrollTo(0, parseInt(scrollY || '0') * -1);
             }
             
             console.log('✅ Menu mobile:', isExpanded ? 'chiuso' : 'aperto');
@@ -107,17 +95,8 @@
         function closeMenu() {
             menuBtn.setAttribute('aria-expanded', 'false');
             mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            
-            // Ripristina scroll
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
+            // FIX SEMPLIFICATO
             document.body.style.overflow = '';
-            if (scrollY) {
-                window.scrollTo(0, parseInt(scrollY) * -1);
-            }
         }
 
         // Chiudi menu premendo ESC
@@ -140,7 +119,7 @@
             }
         });
 
-        // FIX: Previeni scroll del body quando menu è aperto
+        // Previeni scroll del body quando menu è aperto (su touch devices)
         mobileMenu.addEventListener('touchmove', (e) => {
             const isScrollable = mobileMenu.scrollHeight > mobileMenu.clientHeight;
             if (!isScrollable) {
@@ -180,8 +159,8 @@
         let ticking = false;
 
         window.addEventListener('scroll', () => {
-            // FIX: Non processare scroll se menu è aperto
-            if (document.body.classList.contains('menu-open')) {
+            // Non processare scroll se menu è aperto
+            if (document.body.style.overflow === 'hidden') {
                 return;
             }
             
