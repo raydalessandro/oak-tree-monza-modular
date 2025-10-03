@@ -20,6 +20,7 @@
             if (elementId === 'navbar-placeholder') {
                 initMobileMenu();
                 highlightActivePage();
+                initScrollEffect(); // ← NUOVO: Effetto scroll navbar
             }
             
             console.log(`✅ Componente caricato: ${componentPath}`);
@@ -87,11 +88,39 @@
         console.log(`✅ Pagina attiva: ${currentPage}`);
     }
 
+    // Effetto scroll navbar (aggiunge classe 'scrolled')
+    function initScrollEffect() {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+
+        let lastScroll = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            lastScroll = window.scrollY;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (lastScroll > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        console.log('✅ Scroll effect navbar inizializzato');
+    }
+
     // Carica tutti i componenti al DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
         console.log('🚀 Caricamento componenti...');
         
         // Carica componenti in ordine
+        loadComponent('brand-ribbon-placeholder', './components/brand-ribbon.html');
         loadComponent('navbar-placeholder', './components/navbar.html');
         loadComponent('footer-placeholder', './components/footer.html');
         loadComponent('cookie-banner-placeholder', './components/cookie-banner.html');
