@@ -16,11 +16,14 @@
             const html = await response.text();
             placeholder.innerHTML = html;
 
-            // Inizializza funzioni specifiche per componente
+            // Inizializza funzioni specifiche per componente DOPO il caricamento
             if (elementId === 'navbar-placeholder') {
-                initMobileMenu();
-                highlightActivePage();
-                initScrollEffect(); // ← NUOVO: Effetto scroll navbar
+                // Aspetta che il DOM sia aggiornato
+                setTimeout(() => {
+                    initMobileMenu();
+                    highlightActivePage();
+                    initScrollEffect();
+                }, 100);
             }
             
             console.log(`✅ Componente caricato: ${componentPath}`);
@@ -44,20 +47,38 @@
         const mobileMenu = document.getElementById('mobileMenu');
         
         if (!menuBtn || !mobileMenu) {
-            console.warn('Menu mobile non trovato');
+            console.error('❌ Menu mobile non trovato! Controlla che navbar.html sia caricata correttamente.');
+            console.log('menuBtn:', menuBtn);
+            console.log('mobileMenu:', mobileMenu);
             return;
         }
 
-        menuBtn.addEventListener('click', () => {
+        console.log('🔧 Inizializzazione menu mobile...');
+
+        // Gestisci click sul bottone hamburger
+        menuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            
+            console.log('🍔 Click hamburger! Stato attuale:', isExpanded ? 'aperto' : 'chiuso');
+            
+            // Toggle stato
             menuBtn.setAttribute('aria-expanded', !isExpanded);
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = isExpanded ? '' : 'hidden';
+            
+            console.log('✅ Menu mobile:', isExpanded ? 'chiuso' : 'aperto');
         });
 
         // Chiudi menu al click su link
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        console.log(`📱 Trovati ${menuLinks.length} link nel menu mobile`);
+        
+        menuLinks.forEach(link => {
             link.addEventListener('click', () => {
+                console.log('🔗 Click su link mobile menu');
                 menuBtn.setAttribute('aria-expanded', 'false');
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
@@ -67,31 +88,54 @@
         // Chiudi menu premendo ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+                console.log('⌨️ ESC premuto - chiudo menu');
                 menuBtn.setAttribute('aria-expanded', 'false');
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
 
-        console.log('✅ Menu mobile inizializzato');
+        // Chiudi menu cliccando fuori
+        document.addEventListener('click', (e) => {
+            const isClickInsideMenu = mobileMenu.contains(e.target);
+            const isClickOnButton = menuBtn.contains(e.target);
+            const isMenuOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+            
+            if (isMenuOpen && !isClickInsideMenu && !isClickOnButton) {
+                console.log('👆 Click fuori dal menu - chiudo');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        console.log('✅ Menu mobile inizializzato con successo');
     }
 
     // Evidenzia pagina attiva nel menu
     function highlightActivePage() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-link').forEach(link => {
+        const allLinks = document.querySelectorAll('.nav-link');
+        
+        console.log(`🎯 Evidenzio pagina attiva: ${currentPage}`);
+        console.log(`📋 Trovati ${allLinks.length} link totali`);
+        
+        allLinks.forEach(link => {
             const href = link.getAttribute('href');
-            if (href && href.includes(currentPage)) {
+            if (href && (href.includes(currentPage) || (currentPage === 'index.html' && href === './'))) {
                 link.classList.add('active');
+                console.log(`✅ Link attivo: ${href}`);
             }
         });
-        console.log(`✅ Pagina attiva: ${currentPage}`);
     }
 
     // Effetto scroll navbar (aggiunge classe 'scrolled')
     function initScrollEffect() {
         const navbar = document.querySelector('.navbar');
-        if (!navbar) return;
+        if (!navbar) {
+            console.warn('⚠️ Navbar non trovata per scroll effect');
+            return;
+        }
 
         let lastScroll = 0;
         let ticking = false;
@@ -117,12 +161,20 @@
 
     // Carica tutti i componenti al DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('🚀 Caricamento componenti...');
+        console.log('🚀 Inizio caricamento componenti Oak Tree...');
+        console.log('📱 Larghezza viewport:', window.innerWidth + 'px');
+        console.log('💻 Mobile breakpoint: < 1024px');
         
-        // Carica componenti in ordine
-        loadComponent('brand-ribbon-placeholder', './components/brand-ribbon.html');
-        loadComponent('navbar-placeholder', './components/navbar.html');
-        loadComponent('footer-placeholder', './components/footer.html');
-        loadComponent('cookie-banner-placeholder', './components/cookie-banner.html');
+        // Carica componenti in ordine sequenziale
+        Promise.all([
+            loadComponent('brand-ribbon-placeholder', './components/brand-ribbon.html'),
+            loadComponent('navbar-placeholder', './components/navbar.html'),
+            loadComponent('footer-placeholder', './components/footer.html'),
+            loadComponent('cookie-banner-placeholder', './components/cookie-banner.html')
+        ]).then(() => {
+            console.log('✅ Tutti i componenti caricati!');
+        }).catch(error => {
+            console.error('❌ Errore durante il caricamento:', error);
+        });
     });
 })();
