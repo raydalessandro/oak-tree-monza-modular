@@ -3,72 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oak Tree Monza - Rivenditori Autorizzati Vodafone</title>
-    <meta name="description" content="Rivenditori ufficiali Vodafone a Monza e Paderno Dugnano.">
     
-    <!-- ⚠️ PATH RELATIVI per GitHub Pages -->
+    <!-- SEO -->
+    <title>Oak Tree Monza - Rivenditori Autorizzati Vodafone</title>
+    <meta name="description" content="Rivenditori ufficiali Vodafone a Monza e Paderno Dugnano. Offerte mobile, fibra casa e smartphone. Assistenza dedicata.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://oak-tree.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Oak Tree Monza">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Oak Tree - Rivenditori Vodafone Monza">
+    <meta property="og:description" content="Partner ufficiali Vodafone dal 2015. Offerte 5G, fibra e smartphone.">
+    <meta property="og:url" content="https://oak-tree.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23e60000'/%3E%3C/svg%3E">
+    <meta name="theme-color" content="#e60000">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/pages.css">
+    <link rel="stylesheet" href="./css/cookie-banner.css">
+    
+    <!-- Analytics (caricato prima per Consent Mode) -->
+    <script src="./js/analytics.js"></script>
 </head>
 <body>
     
-    <!-- Navbar caricata automaticamente -->
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="sr-only">Vai al contenuto principale</a>
+    
+    <!-- Navbar (caricata automaticamente) -->
     <div id="navbar-placeholder"></div>
 
     <!-- MAIN CONTENT -->
     <main id="main-content" style="padding-top: 80px;">
         
         <!-- Hero Section -->
-        <section style="padding: 5rem 24px; text-align: center; background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);">
+        <section class="hero-section">
             <div class="container">
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; color: var(--ink); margin-bottom: 1rem;">
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; color: var(--ink); margin-bottom: 1rem; position: relative; z-index: 1;">
                     Benvenuti da Oak Tree
                 </h1>
-                <p style="font-size: 1.25rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">
-                    Partner ufficiali Vodafone dal 2015. Due negozi a Monza e Paderno Dugnano.
+                <p style="font-size: 1.25rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem; position: relative; z-index: 1;">
+                    Partner ufficiali Vodafone dal 2015. Due negozi a Monza e Paderno Dugnano 
+                    per offrirti le migliori soluzioni mobile, fibra e business.
                 </p>
-                <a href="./contatti.html" style="display: inline-block; padding: 1rem 2rem; background: var(--vodafone-red); color: white; border-radius: 12px; font-weight: 600; transition: transform 0.3s ease;">
+                <a href="./contatti.html" class="btn btn-primary" style="position: relative; z-index: 1;">
                     Contattaci Ora →
                 </a>
             </div>
         </section>
 
-        <!-- Offerte -->
-        <section style="padding: 5rem 24px;">
+        <!-- Offerte Section -->
+        <section class="offerte-section">
             <div class="container">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--ink);">
-                    Le Nostre Offerte
-                </h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="section-header">
+                    <span class="section-tag">LE NOSTRE SOLUZIONI</span>
+                    <h2 class="section-title">Trova l'Offerta Perfetta per Te</h2>
+                    <p class="section-subtitle">
+                        Tariffe personalizzate per privati, famiglie e aziende. 
+                        Consulenza gratuita e assistenza dedicata.
+                    </p>
+                </div>
+
+                <div class="offerte-grid">
                     
-                    <div style="padding: 2rem; background: white; border: 1px solid var(--light-gray); border-radius: 16px; box-shadow: var(--shadow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--vodafone-red);">👨‍👩‍👧 Privati & Famiglia</h3>
-                        <p style="color: var(--muted); margin-bottom: 1.5rem;">
-                            Tariffe mobile, fibra casa e smartphone per tutta la famiglia.
+                    <!-- Card Privati -->
+                    <div class="offerta-card">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍👩‍👧</div>
+                        <h3>Privati & Famiglia</h3>
+                        <p>
+                            Tariffe mobile convenienti, fibra ultra-veloce per la casa e 
+                            gli smartphone più recenti. Soluzioni per tutta la famiglia.
                         </p>
-                        <a href="./privati.html" style="color: var(--vodafone-red); font-weight: 600;">
-                            Scopri di più →
+                        <a href="./privati.html">
+                            Scopri le offerte →
                         </a>
                     </div>
 
-                    <div style="padding: 2rem; background: white; border: 1px solid var(--light-gray); border-radius: 16px; box-shadow: var(--shadow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--vodafone-red);">💼 Business & P.IVA</h3>
-                        <p style="color: var(--muted); margin-bottom: 1.5rem;">
-                            Soluzioni professionali per aziende e partite IVA.
+                    <!-- Card Business -->
+                    <div class="offerta-card">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                        <h3>Business & P.IVA</h3>
+                        <p>
+                            Soluzioni professionali per aziende e partite IVA. Linee dedicate, 
+                            fibra aziendale e dispositivi per il lavoro.
                         </p>
-                        <a href="./business.html" style="color: var(--vodafone-red); font-weight: 600;">
-                            Scopri di più →
+                        <a href="./business.html">
+                            Scopri le soluzioni →
                         </a>
                     </div>
 
-                    <div style="padding: 2rem; background: white; border: 1px solid var(--light-gray); border-radius: 16px; box-shadow: var(--shadow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--vodafone-red);">🛠️ Assistenza</h3>
-                        <p style="color: var(--muted); margin-bottom: 1.5rem;">
-                            Riparazioni smartphone, configurazioni e supporto tecnico.
+                    <!-- Card Assistenza -->
+                    <div class="offerta-card">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🛠️</div>
+                        <h3>Assistenza & Riparazioni</h3>
+                        <p>
+                            Riparazioni smartphone, configurazioni tecniche e supporto 
+                            personalizzato. Ti aiutiamo con qualsiasi problema.
                         </p>
-                        <a href="./servizi.html" style="color: var(--vodafone-red); font-weight: 600;">
-                            Scopri di più →
+                        <a href="./servizi.html">
+                            Scopri i servizi →
                         </a>
                     </div>
 
@@ -76,13 +119,65 @@
             </div>
         </section>
 
+        <!-- Vantaggi Section -->
+        <section class="section" style="background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">PERCHÉ SCEGLIERCI</span>
+                    <h2 class="section-title">I Vantaggi di Oak Tree</h2>
+                </div>
+
+                <div class="stats-grid" style="max-width: 900px; margin: 0 auto;">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Anni di Esperienza</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Negozi Fisici</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Clienti Soddisfatti</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Partner Vodafone</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2 class="cta-title">Pronto a Passare a Vodafone?</h2>
+                <p class="cta-subtitle">
+                    Vieni a trovarci nei nostri negozi di Monza o Paderno Dugnano, 
+                    oppure contattaci per una consulenza gratuita.
+                </p>
+                <div class="cta-buttons">
+                    <a href="./contatti.html" class="btn btn-primary">
+                        📞 Contattaci
+                    </a>
+                    <a href="./negozi.html" class="btn btn-secondary">
+                        📍 Trova il Negozio
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer caricato automaticamente -->
+    <!-- Footer (caricato automaticamente) -->
     <div id="footer-placeholder"></div>
 
-    <!-- ⚠️ PATH RELATIVI -->
+    <!-- Cookie Banner (caricato automaticamente) -->
+    <div id="cookie-banner-placeholder"></div>
+
+    <!-- JavaScript -->
     <script src="./js/loadComponents.js"></script>
+    <script src="./js/cookieManager.js"></script>
     <script src="./js/main.js"></script>
 
 </body>
