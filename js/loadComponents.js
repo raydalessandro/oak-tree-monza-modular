@@ -41,7 +41,7 @@
         }
     }
 
-    // Inizializza menu mobile
+    // Inizializza menu mobile - FIX COMPLETO
     function initMobileMenu() {
         const menuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -67,7 +67,27 @@
             // Toggle stato
             menuBtn.setAttribute('aria-expanded', !isExpanded);
             mobileMenu.classList.toggle('active');
-            document.body.style.overflow = isExpanded ? '' : 'hidden';
+            
+            // FIX: Gestione migliore del body overflow
+            if (!isExpanded) {
+                // Apertura menu
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+                // Salva la posizione di scroll
+                const scrollY = window.scrollY;
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${scrollY}px`;
+                document.body.style.width = '100%';
+            } else {
+                // Chiusura menu
+                document.body.classList.remove('menu-open');
+                const scrollY = document.body.style.top;
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
             
             console.log('✅ Menu mobile:', isExpanded ? 'chiuso' : 'aperto');
         });
@@ -79,19 +99,32 @@
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 console.log('🔗 Click su link mobile menu');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMenu();
             });
         });
+
+        // Funzione helper per chiudere il menu
+        function closeMenu() {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            // Ripristina scroll
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY) * -1);
+            }
+        }
 
         // Chiudi menu premendo ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
                 console.log('⌨️ ESC premuto - chiudo menu');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMenu();
             }
         });
 
@@ -103,9 +136,15 @@
             
             if (isMenuOpen && !isClickInsideMenu && !isClickOnButton) {
                 console.log('👆 Click fuori dal menu - chiudo');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMenu();
+            }
+        });
+
+        // FIX: Previeni scroll del body quando menu è aperto
+        mobileMenu.addEventListener('touchmove', (e) => {
+            const isScrollable = mobileMenu.scrollHeight > mobileMenu.clientHeight;
+            if (!isScrollable) {
+                e.preventDefault();
             }
         });
 
@@ -141,6 +180,11 @@
         let ticking = false;
 
         window.addEventListener('scroll', () => {
+            // FIX: Non processare scroll se menu è aperto
+            if (document.body.classList.contains('menu-open')) {
+                return;
+            }
+            
             lastScroll = window.scrollY;
 
             if (!ticking) {
