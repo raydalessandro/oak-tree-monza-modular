@@ -22,6 +22,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* FIX: Previeni overflow orizzontale */
+    overflow-x: hidden;
 }
 
 body {
@@ -31,6 +33,16 @@ body {
     background: var(--bg);
     overflow-x: hidden;
     padding-top: 76px; /* 6px ribbon + 70px navbar */
+    /* FIX: Rimuovi qualsiasi position relative che potrebbe interferire */
+    position: static;
+    min-height: 100vh;
+}
+
+/* FIX: Classe per quando menu è aperto */
+body.menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
 }
 
 a {
@@ -58,6 +70,12 @@ img {
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: 24px;
+}
+
+/* FIX: Assicura che main non interferisca con menu */
+main {
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================
@@ -94,4 +112,10 @@ img {
     clip: rect(0,0,0,0);
     white-space: nowrap;
     border: 0;
+}
+
+/* FIX: Reset z-index per elementi che potrebbero interferire */
+section {
+    position: relative;
+    z-index: 1;
 }
