@@ -1,0 +1,72 @@
+/* ============================================
+   VARIABILI CSS - Oak Tree Monza
+   ============================================ */
+:root {
+    --vodafone-red: #e60000;
+    --brand: #e60000;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --light-gray: #e2e8f0;
+    --bg: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
