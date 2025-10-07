@@ -193,7 +193,7 @@
             loadComponent('brand-ribbon-placeholder', './components/brand-ribbon.html'),
             loadComponent('navbar-placeholder', './components/navbar.html'),
             loadComponent('footer-placeholder', './components/footer.html'),
-            loadComponent('cookie-banner-placeholder', './components/cookie-banner.html')
+            loadComponent('cookie-banner-placeholder', './components/cookie-banner.html'),
             loadComponent('chatbot-placeholder', './components/chatbot.html')
         ]).then(() => {
             console.log('✅ Tutti i componenti caricati!');
